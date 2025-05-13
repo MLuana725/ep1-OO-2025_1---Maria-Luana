@@ -26,4 +26,15 @@ public class Aluno {
     public static List<AlunoInfo> getListaDeAlunos() {
         return listaDeAlunos;
     }
+
+    public static boolean checarMatricula(String novaMatricula){
+        for (AlunoInfo alunoInfo : listaDeAlunos){
+            if(alunoInfo.getMatricula()==novaMatricula){
+                return true;
+            }
+        }
+        return false;
+
+    }
+
 }
