@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,7 +8,7 @@ public class Aluno {
     private String matricula;
     private String curso;
 
-    // Lista estática que armazena todos os dados de alunos
+    // Lista que armazena todos os dados de alunos
     private static List<AlunoInfo> listaDeAlunos = new ArrayList<>();
 
     public Aluno(String nomeAluno, String matricula, String curso) {
@@ -29,7 +31,7 @@ public class Aluno {
 
     public static boolean checarMatricula(String novaMatricula){
         for (AlunoInfo alunoInfo : listaDeAlunos){
-            if(alunoInfo.getMatricula()==novaMatricula){
+            if(alunoInfo.getMatricula().equalsIgnoreCase(novaMatricula)){
                 return true;
             }
         }
@@ -37,4 +39,23 @@ public class Aluno {
 
     }
 
+
+    public static void dadosArquivo(String caminhoArquivo) {
+        try (FileWriter writer = new FileWriter(caminhoArquivo)) {
+            // Escreve cabeçalho
+            writer.write("Registro de Alunos\n");
+
+            // Escreve cada aluno
+            for (AlunoInfo aluno : listaDeAlunos) {
+                writer.write("\""+aluno.getNome() + "\"" + aluno.getMatricula() + "\"" + aluno.getCurso() + "\n");
+            }
+
+            System.out.println("Arquivo salvo com sucesso: " + caminhoArquivo);
+        } catch (IOException e) {
+            System.err.println("Erro ao salvar: " + e.getMessage());
+        }
+    }
 }
+
+
+
