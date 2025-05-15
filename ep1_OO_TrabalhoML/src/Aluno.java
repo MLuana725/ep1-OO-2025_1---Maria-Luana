@@ -55,6 +55,12 @@ public class Aluno {
             System.err.println("Erro ao salvar: " + e.getMessage());
         }
     }
+    
+    public static void impressãoListaAlunos(){
+      for (AlunoInfo aluno : listaDeAlunos){
+            System.out.println("Nome: " + aluno.getNome() + ", Matrícula: " + aluno.getMatricula() +", Curso: " + aluno.getCurso());
+        }
+    }
 }
 
 
