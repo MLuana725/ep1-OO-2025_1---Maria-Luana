@@ -4,6 +4,7 @@ public class DisciplinaInfo {
     private int cargaHoraria;
     private String preRequisito;
     
+   //construtores das variáveis
     public DisciplinaInfo(String nomeDaDisciplina,String codigo, int cargaHoraria,String preRequisito){
         this.nomeDaDisciplina = nomeDaDisciplina;
         this.codigo = codigo;
