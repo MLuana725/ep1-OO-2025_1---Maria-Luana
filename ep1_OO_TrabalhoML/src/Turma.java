@@ -16,5 +16,30 @@ public class Turma{
         this.presencial = presencial;
     }
 
+    public String getprofessor(){
+        return professor;
+    }
+
+    public int getcapacidade(){
+        return capacidade;
+    }
+
+    public int gethorarioAula(){
+        return horarioAula;
+    }
+
+    public int getmodoDeAvaliacao(){
+        return modoDeAvaliacao;
+    }
+
+    public boolean getpresencial(){
+        return presencial;
+    }
+
+    public DisciplinaInfo getdisciplina(){
+        return disciplina;
+    }
+
+    
     
 }
