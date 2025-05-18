@@ -93,5 +93,22 @@ public class GerenciadorTurma {
         }
 
     }
+    ///////////////////////////////////////matricula dos alunos/////////////////////////////////////////
+    
+    public static void matriculaDoAluno(){
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Turmas disponíveis");
+        List<Turma> turmas = Turma.getlistaTurmas();
+
+        for (int i = 0; i < turmas.size(); i++) {
+         System.out.println(i + " - " + turmas.get(i).getdisciplina().getnomeDaDisciplina() +  " Capacidade máxima de alunos: " + turmas.get(i).getcapacidade() +", Matriculados: " + turmas.get(i).getalunosMatriculados().size() + ")");
+            
+        }
+        
+        if (turmas.isEmpty()) {
+            System.out.println("Não há turmas cadastradas");
+            return;
+        }
+    }
 }

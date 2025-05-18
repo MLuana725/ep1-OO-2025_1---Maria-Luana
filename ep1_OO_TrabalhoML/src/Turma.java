@@ -61,6 +61,17 @@ public class Turma{
     return alunosMatriculados;
    }
     
-
+   ////////////////////////////metodo limitador de alunos matriculados em turmas////////////////////////
    
+   public boolean matriulaLimitadaDeAlunos(AlunoInfo aluno){
+    if (alunosMatriculados.size() < capacidade) {
+        alunosMatriculados.add(aluno);
+        return true;
+        
+    }else{
+        System.out.println("Turma com capacidade máxima atingida, não foi possível matricular o aluno.");
+        return false;
+    }
+   }
+
 }
