@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Turma{
     private DisciplinaInfo disciplina;
     private String professor;
@@ -39,7 +42,25 @@ public class Turma{
     public DisciplinaInfo getdisciplina(){
         return disciplina;
     }
+   //////////////////////////////////////////////////////////////////////////////////////////////////
+   
+   ///////////////////////////////Lista de turmas/////////////////////////////////////////
+   
+   private static List<Turma> listaTurmas = new ArrayList<>();
+   private List<AlunoInfo> alunosMatriculados = new ArrayList<>();
+   
+   public static List<Turma> getlistaTurmas(){
+    return listaTurmas;
+   }
+    
+   public void adicionarAluno(AlunoInfo aluno){
+    alunosMatriculados.add(aluno);
+   }
 
+   public List<AlunoInfo> getalunosMatriculados(){
+    return alunosMatriculados;
+   }
     
-    
+
+   
 }

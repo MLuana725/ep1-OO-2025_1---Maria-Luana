@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class GerenciadorTurma {
@@ -58,6 +59,39 @@ public class GerenciadorTurma {
 
     }
  
+    ////////////////////metodo listagem de turmas com alunos/////////////////////////
     
+    public static void listaDasTurmasEalunos(){
+        List<Turma> turmas = Turma.getlistaTurmas();
+
+        if (turmas.isEmpty()) {
+            System.out.println("Não há turmas cadastradas");
+            return;
+            
+        }
+
+        for (Turma turma : turmas){
+
+         System.out.println("Disciplina: " + turma.getdisciplina().getnomeDaDisciplina());
+         System.out.println("Código da Disciplina: " + turma.getdisciplina().getcodigo());
+         System.out.println("Professor(a): " + turma.getprofessor());
+         System.out.println("Capacidade da Turma: " + turma.getcapacidade());
+         System.out.println("Presencial?: " + turma.getpresencial());
+
+        
+
+         List<AlunoInfo> alunos = turma.getalunosMatriculados();
+           if (alunos.isEmpty()) {
+              System.out.println("Não há alunos matriculados");
+            
+            }else{
+             System.out.println("Alunos matriculados:");
+               for (AlunoInfo aluno : alunos){
+                 System.out.println("- " + aluno.getNome() + " (" + aluno.getMatricula() + ")");
+                }
+            }
+        }
+
+    }
 
 }
