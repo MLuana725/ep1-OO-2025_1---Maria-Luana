@@ -26,6 +26,9 @@ public class GerenciadorTurma {
 
          System.out.println("Informações da Turma");
 
+         System.out.print("Digite o nome da Turma (exemplo: turma 1):");
+         String nomeTurma = scanner.nextLine();
+
          System.out.print("Digite o nome do professor(a):");
          String professor = scanner.nextLine();
 
@@ -46,7 +49,7 @@ public class GerenciadorTurma {
          System.out.print("Sua turma será presencial? Digite 'true' para sim e 'false' para não :");
          boolean presencial = scanner.nextBoolean();
 
-         Turma novaTurma = new Turma(disciplina, professor, capacidade, horarioAula, modoDeAvaliacao, presencial);
+         Turma novaTurma = new Turma(disciplina, professor, capacidade, horarioAula, modoDeAvaliacao, presencial, nomeTurma);
         
          System.out.println("Turma criada com sucesso!");
          System.out.println("Disciplina: " + novaTurma.getdisciplina().getnomeDaDisciplina());
@@ -87,7 +90,7 @@ public class GerenciadorTurma {
             }else{
              System.out.println("Alunos matriculados:");
                for (AlunoInfo aluno : alunos){
-                 System.out.println("- " + aluno.getNome() + " (" + aluno.getMatricula() + ")");
+                 System.out.println("- " + aluno.getNome() + " |" + aluno.getMatricula());
                 }
             }
         }
@@ -102,13 +105,47 @@ public class GerenciadorTurma {
         List<Turma> turmas = Turma.getlistaTurmas();
 
         for (int i = 0; i < turmas.size(); i++) {
-         System.out.println(i + " - " + turmas.get(i).getdisciplina().getnomeDaDisciplina() +  " Capacidade máxima de alunos: " + turmas.get(i).getcapacidade() +", Matriculados: " + turmas.get(i).getalunosMatriculados().size() + ")");
-            
+         Turma turma = turmas.get(i);
+         System.out.println(i + " - " + turma.getdisciplina().getnomeDaDisciplina()+ " | " + turma.getnomeTurma()+ " Capacidade: " + turma.getcapacidade() + ", Matriculados: " + turma.getalunosMatriculados().size() + ")");
+        }
+
+        System.out.print("Escolha a turma digitando de acordo com a ordem na lista (começa do 0):");
+        int resp = scanner.nextInt();
+        scanner.nextLine();
+
+        if (resp < 0 || resp > turmas.size()) {
+            System.out.println("Opção inválida");
+            return;
         }
         
+        Turma turmaEscolhida = turmas.get(resp);
+        if (turmaEscolhida.getalunosMatriculados().size() >= turmaEscolhida.getcapacidade()) {
+            System.out.println("Não é possivel matricular, pois a turma está cheia!");
+            return;
+        }
+        
+        //Caso não há turmas para matricular
         if (turmas.isEmpty()) {
             System.out.println("Não há turmas cadastradas");
             return;
         }
+        
+        System.out.print("Nome do aluno: ");
+        String nome = scanner.nextLine();
+
+        System.out.print("Matrícula: ");
+        String matricula = scanner.nextLine();
+
+        System.out.print("Curso: ");
+        String curso = scanner.nextLine();
+
+        AlunoInfo aluno = new AlunoInfo(nome, matricula, curso);
+
+        if (turmaEscolhida.adicionarAluno(aluno)) {
+            System.out.println("Aluno matriculado com sucesso!");
+        } else {
+            System.out.println("Erro ao matricular. Turma cheia.");
+        }
+
     }
 }

@@ -8,15 +8,18 @@ public class Turma{
     private int horarioAula;
     private int modoDeAvaliacao;
     private boolean presencial;
+    private String nomeTurma;
 
     //construtores das variávies
-    public Turma(DisciplinaInfo disciplina, String professor, int capacidade, int horarioAula, int modoDeAvaliacao, boolean presencial){
+    public Turma(DisciplinaInfo disciplina, String professor, int capacidade, int horarioAula, int modoDeAvaliacao, boolean presencial, String nomeTurma){
         this.disciplina = disciplina;
         this.professor = professor;
         this.capacidade = capacidade;
         this.horarioAula = horarioAula;
         this.modoDeAvaliacao = modoDeAvaliacao;
         this.presencial = presencial;
+        this.nomeTurma = nomeTurma;
+        listaTurmas.add(this);
     }
 
     public String getprofessor(){
@@ -42,6 +45,10 @@ public class Turma{
     public DisciplinaInfo getdisciplina(){
         return disciplina;
     }
+
+    public String getnomeTurma(){
+        return nomeTurma;
+    }
    //////////////////////////////////////////////////////////////////////////////////////////////////
    
    ///////////////////////////////Lista de turmas/////////////////////////////////////////
@@ -53,8 +60,12 @@ public class Turma{
     return listaTurmas;
    }
     
-   public void adicionarAluno(AlunoInfo aluno){
-    alunosMatriculados.add(aluno);
+   public boolean adicionarAluno(AlunoInfo aluno){
+     if (alunosMatriculados.size() < capacidade) {
+            alunosMatriculados.add(aluno);
+            return true;
+        }
+        return false;
    }
 
    public List<AlunoInfo> getalunosMatriculados(){
@@ -69,7 +80,6 @@ public class Turma{
         return true;
         
     }else{
-        System.out.println("Turma com capacidade máxima atingida, não foi possível matricular o aluno.");
         return false;
     }
    }
