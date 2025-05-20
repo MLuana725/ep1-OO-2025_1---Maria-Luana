@@ -141,7 +141,7 @@ public class GerenciadorTurma {
 
         AlunoInfo aluno = new AlunoInfo(nome, matricula, curso);
 
-        if (turmaEscolhida.adicionarAluno(aluno)) {
+        if (turmaEscolhida.matriulaLimitadaDeAlunos(aluno)) {
             System.out.println("Aluno matriculado com sucesso!");
         } else {
             System.out.println("Erro ao matricular. Turma cheia.");

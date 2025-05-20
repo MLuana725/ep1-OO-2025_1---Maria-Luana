@@ -60,14 +60,7 @@ public class Turma{
     return listaTurmas;
    }
     
-   public boolean adicionarAluno(AlunoInfo aluno){
-     if (alunosMatriculados.size() < capacidade) {
-            alunosMatriculados.add(aluno);
-            return true;
-        }
-        return false;
-   }
-
+   
    public List<AlunoInfo> getalunosMatriculados(){
     return alunosMatriculados;
    }
