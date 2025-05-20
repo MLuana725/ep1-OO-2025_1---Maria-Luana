@@ -60,7 +60,6 @@ public class Turma{
     return listaTurmas;
    }
     
-   
    public List<AlunoInfo> getalunosMatriculados(){
     return alunosMatriculados;
    }
