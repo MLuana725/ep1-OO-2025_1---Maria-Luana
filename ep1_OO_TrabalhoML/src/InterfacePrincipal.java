@@ -47,15 +47,48 @@ public class InterfacePrincipal {
     }
 
     public static void menuModoAluno(){
+      Scanner scanner = new Scanner(System.in);
+      int opc = 0;
+      while (opc != 3) {
+         System.out.println("==================================================================");
+         System.out.println("                         Modo Aluno");
+         System.out.println("==================================================================");
+         System.out.println("Escolha o que deseja fazer:");
+         System.out.println("1-Cadastrar Aluno");
+         System.out.println("2-?????");
+         System.out.println("3-Voltar ao menu principal");
+         opc = scanner.nextInt();
+         scanner.nextLine();
+           switch (opc) {
+            case 1:
+             //cadastro
+               break;
 
+            case 2:
+             //?????
+               break;
+
+            case 3:
+             //encerrar
+              break;
+
+           
+            }
+
+        }
+       scanner.close();
     } 
     
     public static void menuModoDisciplina(){
-        
+     System.out.println("==================================================================");
+     System.out.println("                         Modo Disciplina");
+     System.out.println("==================================================================");
     } 
 
     public static void menuModoAvaliação(){
-        
+     System.out.println("==================================================================");
+     System.out.println("                         Modo Avaliação");
+     System.out.println("==================================================================");
     } 
 
 
