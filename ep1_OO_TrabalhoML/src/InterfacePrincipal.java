@@ -52,7 +52,7 @@ public class InterfacePrincipal {
     public static void menuModoAluno(){
       Scanner scanner = new Scanner(System.in);
       int opc = 0;
-      while (opc != 7) {
+      while (opc != 5) {
          System.out.println("==================================================================");
          System.out.println("                         Modo Aluno");
          System.out.println("==================================================================");
@@ -61,8 +61,7 @@ public class InterfacePrincipal {
          System.out.println("2-Mostrar Lista de Alunos");
          System.out.println("3-Matricular o Aluno em uma Turma");
          System.out.println("4-Editar Aluno");
-         System.out.println("5-Mostrar Lista de Alunos");
-         System.out.println("7-Voltar ao menu principal");
+         System.out.println("5-Voltar ao menu principal");
          opc = scanner.nextInt();
          scanner.nextLine();
            switch (opc) {
@@ -97,14 +96,14 @@ public class InterfacePrincipal {
                break;
 
             case 3:
-             //mmmmm
+             GerenciadorTurma.matriculaDoAluno();
               break;
             
             case 4:
              //Editar aluno
              break;
               
-            case 7:
+            case 5:
              //encerrar
 
             default:

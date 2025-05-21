@@ -23,7 +23,7 @@ public class AlunoInfo {
 
     @Override
     public String toString() {
-        return "Nome: " + nome + ", Matrícula: " + matricula + ", Curso: " + curso; //1?versão
+        return "Nome: " + nome + "| Matrícula: " + matricula + "| Curso: " + curso; //1?versão
     }
 }
 
