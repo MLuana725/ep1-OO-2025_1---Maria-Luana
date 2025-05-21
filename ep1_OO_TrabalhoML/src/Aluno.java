@@ -47,7 +47,7 @@ public class Aluno {
 
             // Escreve cada aluno
             for (AlunoInfo aluno : listaDeAlunos) {
-                writer.write("\""+aluno.getNome() + "\"" + aluno.getMatricula() + "\"" + aluno.getCurso() + "\n");
+                writer.write("|"+aluno.getNome() + "|" + aluno.getMatricula() + "|" + aluno.getCurso() + "\n");
             }
 
             System.out.println("Arquivo salvo com sucesso: " + caminhoArquivo);
@@ -58,7 +58,7 @@ public class Aluno {
     
     public static void impressãoListaAlunos(){
       for (AlunoInfo aluno : listaDeAlunos){
-            System.out.println("Nome: " + aluno.getNome() + ", Matrícula: " + aluno.getMatricula() +", Curso: " + aluno.getCurso());
+            System.out.println("Nome: " + aluno.getNome() + "| Matrícula: " + aluno.getMatricula() +"| Curso: " + aluno.getCurso());
         }
     }
 }

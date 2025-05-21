@@ -93,11 +93,11 @@ public class InterfacePrincipal {
                break;
 
             case 2:
-             //lista
+               Aluno.impressãoListaAlunos();
                break;
 
             case 3:
-             //matricula
+             //mmmmm
               break;
             
             case 4:
