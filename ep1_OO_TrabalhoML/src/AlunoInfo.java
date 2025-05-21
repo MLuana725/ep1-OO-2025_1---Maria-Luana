@@ -2,6 +2,7 @@ public class AlunoInfo {
     private String nome;
     private String matricula;
     private String curso;
+    protected boolean alunoEspecial = false;
 
     public AlunoInfo(String nome, String matricula, String curso) {
         this.nome = nome;
@@ -19,6 +20,18 @@ public class AlunoInfo {
 
     public String getCurso() {
         return curso;
+    }
+
+    public boolean isAlunoEspecial(){
+        return alunoEspecial;
+    }
+
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+
+    public void setCurso(String curso){
+        this.curso = curso;
     }
 
     @Override

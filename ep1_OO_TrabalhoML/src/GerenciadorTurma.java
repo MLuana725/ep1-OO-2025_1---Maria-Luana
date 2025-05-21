@@ -146,6 +146,6 @@ public class GerenciadorTurma {
         } else {
             System.out.println("Erro ao matricular. Turma cheia.");
         }
-
+     
     }
 }
