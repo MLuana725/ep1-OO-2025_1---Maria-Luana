@@ -2,9 +2,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GerenciadorTurma {
-    public static void novaTurma(){
+    public static void novaTurma(Scanner scanner){
         String resposta = "sim";
-        Scanner scanner = new Scanner(System.in);
+        
         
         while (resposta.equalsIgnoreCase("sim")) {
          System.out.println("Cadastro de Turmas\nInformações da disciplina:");
@@ -58,7 +58,7 @@ public class GerenciadorTurma {
          resposta = scanner.nextLine();
         }
         System.out.println("Encerrando o cadastro de turmas.");
-        scanner.close();
+        
 
     }
  
@@ -98,8 +98,8 @@ public class GerenciadorTurma {
     }
     ///////////////////////////////////////matricula dos alunos/////////////////////////////////////////
     
-    public static void matriculaDoAluno(){
-        Scanner scanner = new Scanner(System.in);
+    public static void matriculaDoAluno(Scanner scanner){
+        
 
         System.out.println("Turmas disponíveis");
         List<Turma> turmas = Turma.getlistaTurmas();

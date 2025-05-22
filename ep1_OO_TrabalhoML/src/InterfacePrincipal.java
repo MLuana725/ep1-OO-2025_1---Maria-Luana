@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
 public class InterfacePrincipal {
+  public static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args){
-       Scanner scanner = new Scanner(System.in);
+       
        int opcao = 0;
         
        while (opcao != 4) {
@@ -22,7 +23,7 @@ public class InterfacePrincipal {
 
          switch (opcao) {
             case 1:
-                menuModoAluno();
+                menuModoAluno(scanner);
                 break;
 
             case 2:
@@ -45,12 +46,11 @@ public class InterfacePrincipal {
 
 
         }
-        scanner.close();
+      scanner.close();
 
     }
 
-    public static void menuModoAluno(){
-      Scanner scanner = new Scanner(System.in);
+    public static void menuModoAluno(Scanner scanner){
       int opc = 0;
       while (opc != 5) {
          System.out.println("==================================================================");
@@ -96,7 +96,7 @@ public class InterfacePrincipal {
                break;
 
             case 3:
-             GerenciadorTurma.matriculaDoAluno();
+             GerenciadorTurma.matriculaDoAluno(scanner);
               break;
             
             case 4:
@@ -112,7 +112,7 @@ public class InterfacePrincipal {
             }
 
         }
-       scanner.close();
+      
     } 
     
     public static void menuModoDisciplina(){
