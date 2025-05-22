@@ -58,7 +58,7 @@ public class Aluno {
     
     public static void impressãoListaAlunos(){
       for (AlunoInfo aluno : listaDeAlunos){
-            System.out.println("Nome: " + aluno.getNome() + "| Matrícula: " + aluno.getMatricula() +"| Curso: " + aluno.getCurso());
+            System.out.println(aluno);
         }
     }
 }

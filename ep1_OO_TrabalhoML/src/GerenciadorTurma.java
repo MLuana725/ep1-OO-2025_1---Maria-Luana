@@ -90,7 +90,7 @@ public class GerenciadorTurma {
             }else{
              System.out.println("Alunos matriculados:");
                for (AlunoInfo aluno : alunos){
-                 System.out.println("- " + aluno.getNome() + " |" + aluno.getMatricula());
+                 System.out.println("- " +aluno);
                 }
             }
         }
@@ -104,16 +104,23 @@ public class GerenciadorTurma {
         System.out.println("Turmas disponíveis");
         List<Turma> turmas = Turma.getlistaTurmas();
 
+        //Caso não há turmas para matricular
+        if (turmas.isEmpty()) {
+            System.out.println("Não há turmas cadastradas");
+            return;
+        }
+         
+        //Há turmas
         for (int i = 0; i < turmas.size(); i++) {
          Turma turma = turmas.get(i);
          System.out.println(i + " - " + turma.getdisciplina().getnomeDaDisciplina()+ " | " + turma.getnomeTurma()+ " Capacidade: " + turma.getcapacidade() + ", Matriculados: " + turma.getalunosMatriculados().size() + ")");
         }
 
-        System.out.print("Escolha a turma digitando de acordo com a ordem na lista (começa do 0):");
+        System.out.print("Escolha a turma digitando de acordo com a ordem na lista:");
         int resp = scanner.nextInt();
         scanner.nextLine();
 
-        if (resp < 0 || resp > turmas.size()) {
+        if (resp < 0 || resp >= turmas.size()) {
             System.out.println("Opção inválida");
             return;
         }
@@ -124,11 +131,6 @@ public class GerenciadorTurma {
             return;
         }
         
-        //Caso não há turmas para matricular
-        if (turmas.isEmpty()) {
-            System.out.println("Não há turmas cadastradas");
-            return;
-        }
         
         System.out.print("Nome do aluno: ");
         String nome = scanner.nextLine();
