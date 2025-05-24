@@ -66,7 +66,7 @@ public class Turma{
     
    ////////////////////////////metodo limitador de alunos matriculados em turmas////////////////////////
    
-   public boolean matriulaLimitadaDeAlunos(AlunoInfo aluno){
+   public boolean matriculaLimitadaDeAlunos(AlunoInfo aluno){
     if (alunosMatriculados.size() < capacidade) {
         alunosMatriculados.add(aluno);
         return true;

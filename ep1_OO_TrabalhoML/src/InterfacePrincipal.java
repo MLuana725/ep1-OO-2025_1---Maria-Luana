@@ -83,7 +83,8 @@ public class InterfacePrincipal {
              String r = scanner.nextLine();
  
              if (r.equalsIgnoreCase("Sim")) {
-                System.out.println("adicionando a categoria aluno especial");
+                AlunoEspecial alunoEspecial = new AlunoEspecial(nome, matricula, curso);
+                Aluno.adicionarAluno(alunoEspecial);
                 
              }else{
                 new Aluno(nome, matricula, curso);

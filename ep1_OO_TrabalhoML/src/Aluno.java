@@ -61,6 +61,10 @@ public class Aluno {
             System.out.println(aluno);
         }
     }
+
+    public static void adicionarAluno(AlunoInfo alunoInfo){
+        listaDeAlunos.add(alunoInfo);
+    }
 }
 
 
