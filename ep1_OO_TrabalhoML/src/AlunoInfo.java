@@ -35,6 +35,10 @@ public class AlunoInfo {
         this.curso = curso;
     }
 
+    public void setAlunoEspecial(boolean alunoEspecial) {
+        this.alunoEspecial = alunoEspecial;
+    }
+
     @Override
     public String toString() {
         return "Nome: " + nome + "| Matrícula: " + matricula + "| Curso: " + curso; //1?versão

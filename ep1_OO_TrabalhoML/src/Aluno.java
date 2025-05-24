@@ -29,17 +29,6 @@ public class Aluno {
         return listaDeAlunos;
     }
 
-    public static boolean checarMatricula(String novaMatricula){
-        for (AlunoInfo alunoInfo : listaDeAlunos){
-            if(alunoInfo.getMatricula().equalsIgnoreCase(novaMatricula)){
-                return true;
-            }
-        }
-        return false;
-
-    }
-
-
     public static void dadosArquivo(String caminhoArquivo) {
         try (FileWriter writer = new FileWriter(caminhoArquivo)) {
             // Escreve cabeçalho
@@ -61,9 +50,34 @@ public class Aluno {
             System.out.println(aluno);
         }
     }
+    
+    //metodos relacionados a matricula
+    public static boolean checarMatricula(String novaMatricula){
+        for (AlunoInfo alunoInfo : listaDeAlunos){
+            if(alunoInfo.getMatricula().equalsIgnoreCase(novaMatricula)){
+                return true;
+            }
+        }
+        return false;
 
-    public static void adicionarAluno(AlunoInfo alunoInfo){
-        listaDeAlunos.add(alunoInfo);
+    }
+
+    public static boolean adicionarAluno(AlunoInfo aluno) {
+        if (checarMatricula(aluno.getMatricula())) {
+            System.out.println("Matrícula já cadastrada.");
+            return false;
+        }
+        listaDeAlunos.add(aluno);
+        return true;
+    }
+
+    public static AlunoInfo buscarAlunoPorMatricula(String matricula) {
+        for (AlunoInfo aluno : listaDeAlunos) {
+            if (aluno.getMatricula().equalsIgnoreCase(matricula)) {
+                return aluno;
+            }
+        }
+        return null;
     }
 }
 

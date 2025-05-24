@@ -98,56 +98,67 @@ public class GerenciadorTurma {
     }
     ///////////////////////////////////////matricula dos alunos/////////////////////////////////////////
     
-    public static void matriculaDoAluno(Scanner scanner){
-        
+   public static void matriculaDoAluno(Scanner scanner){
+    System.out.println("Turmas disponíveis");
+    List<Turma> turmas = Turma.getlistaTurmas();
 
-        System.out.println("Turmas disponíveis");
-        List<Turma> turmas = Turma.getlistaTurmas();
-
-        //Caso não há turmas para matricular
-        if (turmas.isEmpty()) {
-            System.out.println("Não há turmas cadastradas");
-            return;
-        }
-         
-        //Há turmas
-        for (int i = 0; i < turmas.size(); i++) {
-         Turma turma = turmas.get(i);
-         System.out.println(i + " - " + turma.getdisciplina().getnomeDaDisciplina()+ " | " + turma.getnomeTurma()+ " Capacidade: " + turma.getcapacidade() + ", Matriculados: " + turma.getalunosMatriculados().size() + ")");
-        }
-
-        System.out.print("Escolha a turma digitando de acordo com a ordem na lista:");
-        int resp = scanner.nextInt();
-        scanner.nextLine();
-
-        if (resp < 0 || resp >= turmas.size()) {
-            System.out.println("Opção inválida");
-            return;
-        }
-        
-        Turma turmaEscolhida = turmas.get(resp);
-        if (turmaEscolhida.getalunosMatriculados().size() >= turmaEscolhida.getcapacidade()) {
-            System.out.println("Não é possivel matricular, pois a turma está cheia!");
-            return;
-        }
-        
-        
-        System.out.print("Nome do aluno: ");
-        String nome = scanner.nextLine();
-
-        System.out.print("Matrícula: ");
-        String matricula = scanner.nextLine();
-
-        System.out.print("Curso: ");
-        String curso = scanner.nextLine();
-
-        AlunoInfo aluno = new AlunoInfo(nome, matricula, curso);
-
-        if (turmaEscolhida.matriculaLimitadaDeAlunos(aluno)) {
-            System.out.println("Aluno matriculado com sucesso!");
-        } else {
-            System.out.println("Erro ao matricular. Turma cheia.");
-        }
-     
+    if (turmas.isEmpty()) {
+        System.out.println("Não há turmas cadastradas");
+        return;
     }
+
+    for (int i = 0; i < turmas.size(); i++) {
+        Turma turma = turmas.get(i);
+        System.out.println(i + " - " + turma.getdisciplina().getnomeDaDisciplina() +
+            " | " + turma.getnomeTurma() + 
+            " Capacidade: " + turma.getcapacidade() + 
+            ", Matriculados: " + turma.getalunosMatriculados().size());
+    }
+
+    System.out.print("Escolha a turma digitando de acordo com a ordem na lista: ");
+    int resp = scanner.nextInt();
+    scanner.nextLine();
+
+    if (resp < 0 || resp >= turmas.size()) {
+        System.out.println("Opção inválida");
+        return;
+    }
+
+    Turma turmaEscolhida = turmas.get(resp);
+    if (turmaEscolhida.getalunosMatriculados().size() >= turmaEscolhida.getcapacidade()) {
+        System.out.println("Não é possível matricular, pois a turma está cheia!");
+        return;
+    }
+
+    System.out.print("Digite a matrícula do aluno: ");
+    String matricula = scanner.nextLine();
+
+    AlunoInfo aluno = Aluno.buscarAlunoPorMatricula(matricula);
+
+    if (aluno == null) {
+        System.out.println("Aluno não encontrado. Verifique se foi cadastrado corretamente.");
+        return;
+    }
+
+    if (turmaEscolhida.getalunosMatriculados().contains(aluno)) {
+        System.out.println("Aluno já está matriculado nesta turma.");
+        return;
+    }
+
+    if (aluno instanceof AlunoEspecial) {
+        AlunoEspecial especial = (AlunoEspecial) aluno;
+        if (!especial.podeMatricular()) {
+            System.out.println("Aluno especial já está matriculado em 2 disciplinas.");
+            return;
+        }
+        especial.adicDisciplina(turmaEscolhida.getdisciplina().getcodigo());
+    }
+
+    if (turmaEscolhida.matriculaLimitadaDeAlunos(aluno)) {
+        System.out.println("Aluno matriculado com sucesso!");
+    } else {
+        System.out.println("Erro ao matricular. Turma cheia.");
+    }
+}
+
 }
