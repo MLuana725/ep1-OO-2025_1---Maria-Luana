@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,5 +78,45 @@ public class Turma{
         return false;
     }
    }
+   
 
+    public static List<Turma> carregarTurmasDeArquivo(String caminhoArquivo, List<DisciplinaInfo> disciplinas) {
+     List<Turma> turmas = new ArrayList<>();
+       try (BufferedReader reader = new BufferedReader(new FileReader(caminhoArquivo))) {
+          String linha = reader.readLine(); // cabeçalho
+
+           while ((linha = reader.readLine()) != null) {
+             String[] partes = linha.split("\\|");
+               if (partes.length == 7) {
+                  String nomeTurma = partes[0];
+                  String codigoDisciplina = partes[1];
+                  String professor = partes[2];
+                  int capacidade = Integer.parseInt(partes[3]);
+                  int horario = Integer.parseInt(partes[4]);
+                  int modoAvaliacao = Integer.parseInt(partes[5]);
+                  boolean presencial = Boolean.parseBoolean(partes[6]);
+
+                 // Busca disciplina pelo código
+                 DisciplinaInfo disciplina = null;
+                   for (DisciplinaInfo d : disciplinas) {
+                       if (d.getcodigo().equalsIgnoreCase(codigoDisciplina)) {
+                          disciplina = d;
+                          break;
+                        }
+                    }
+
+                    if (disciplina != null) {
+                       Turma turma = new Turma(disciplina, professor, capacidade, horario, modoAvaliacao, presencial, nomeTurma);
+                       turmas.add(turma);
+                    } else {
+                       System.out.println("Disciplina não encontrada para código: " + codigoDisciplina);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Erro ao carregar turmas: " + e.getMessage());
+        }
+        return turmas;
+    }
 }
+
