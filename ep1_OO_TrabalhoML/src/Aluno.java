@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ public class Aluno {
     private String curso;
 
     // Lista que armazena todos os dados de alunos
-    private static List<AlunoInfo> listaDeAlunos = new ArrayList<>();
+    private static final List<AlunoInfo> listaDeAlunos = new ArrayList<>();
 
     public Aluno(String nomeAluno, String matricula, String curso) {
         this.nomeAluno = nomeAluno;
@@ -29,19 +31,38 @@ public class Aluno {
         return listaDeAlunos;
     }
 
-    public static void dadosArquivo(String caminhoArquivo) {
+    public static void salvarAlunosEmArquivo(String caminhoArquivo) {
         try (FileWriter writer = new FileWriter(caminhoArquivo)) {
-            // Escreve cabeçalho
-            writer.write("Registro de Alunos\n");
-
-            // Escreve cada aluno
+            writer.write("Nome|Matricula|Curso\n"); // cabeçalho correto
             for (AlunoInfo aluno : listaDeAlunos) {
-                writer.write("|"+aluno.getNome() + "|" + aluno.getMatricula() + "|" + aluno.getCurso() + "\n");
+                writer.write(aluno.getNome() + "|" + aluno.getMatricula() + "|" + aluno.getCurso() + "\n");
             }
-
             System.out.println("Arquivo salvo com sucesso: " + caminhoArquivo);
         } catch (IOException e) {
-            System.err.println("Erro ao salvar: " + e.getMessage());
+            System.err.println("Erro ao salvar alunos: " + e.getMessage());
+        }
+    }
+
+    public static void carregarAlunosDeArquivo(String caminhoArquivo) {
+        listaDeAlunos.clear(); 
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(caminhoArquivo))) {
+            String linha = reader.readLine(); 
+
+            while ((linha = reader.readLine()) != null) {
+                String[] partes = linha.split("\\|");
+                if (partes.length == 3) {
+                    String nome = partes[0];
+                    String matricula = partes[1];
+                    String curso = partes[2];
+
+                    AlunoInfo aluno = new AlunoInfo(nome, matricula, curso);
+                    listaDeAlunos.add(aluno);
+                }
+            }
+            System.out.println("Alunos carregados com sucesso de: " + caminhoArquivo);
+        } catch (IOException e) {
+            System.err.println("Erro ao carregar alunos: " + e.getMessage());
         }
     }
     

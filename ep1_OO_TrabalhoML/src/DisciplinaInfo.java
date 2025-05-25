@@ -1,5 +1,8 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DisciplinaInfo {
@@ -45,6 +48,30 @@ public class DisciplinaInfo {
             System.err.println("Erro ao salvar disciplinas: " + e.getMessage());
         }
     }
+
+    public static List<DisciplinaInfo> carregarDisciplinasDeArquivo(String caminhoArquivo) {
+        List<DisciplinaInfo> disciplinas = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(caminhoArquivo))) {
+            String linha = reader.readLine(); // ler cabeçalho
+
+            while ((linha = reader.readLine()) != null) {
+                String[] partes = linha.split("\\|");
+                if (partes.length == 4) {
+                    String nome = partes[0];
+                    String codigo = partes[1];
+                    int cargaHoraria = Integer.parseInt(partes[2]);
+                    String preRequisito = partes[3];
+
+                    DisciplinaInfo d = new DisciplinaInfo(nome, codigo, cargaHoraria, preRequisito);
+                    disciplinas.add(d);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Erro ao carregar disciplinas: " + e.getMessage());
+        }
+        return disciplinas;
+    }
+
 }
 
 
