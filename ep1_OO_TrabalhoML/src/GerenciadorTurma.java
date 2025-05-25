@@ -73,15 +73,18 @@ public class GerenciadorTurma {
             
         }
 
+        System.out.printf("%-15s %-10s %-15s %-12s %-10s %-15s %-10s%n","Turma", "Código", "Professor", "Capacidade", "Alunos", "Horário", "Presencial");
+
         for (Turma turma : turmas){
-
-         System.out.println("Disciplina: " + turma.getdisciplina().getnomeDaDisciplina());
-         System.out.println("Código da Disciplina: " + turma.getdisciplina().getcodigo());
-         System.out.println("Professor(a): " + turma.getprofessor());
-         System.out.println("Capacidade da Turma: " + turma.getcapacidade());
-         System.out.println("Presencial?: " + turma.getpresencial());
-
-        
+          System.out.printf("%-15s %-10s %-15s %-12d %-10d %-15d %-10s%n",
+            turma.getnomeTurma(),
+            turma.getdisciplina().getcodigo(),
+            turma.getprofessor(),
+            turma.getcapacidade(),
+            turma.getalunosMatriculados().size(),
+            turma.gethorarioAula(),
+            turma.getpresencial() ? "Sim" : "Não");
+         
 
          List<AlunoInfo> alunos = turma.getalunosMatriculados();
            if (alunos.isEmpty()) {
@@ -90,7 +93,8 @@ public class GerenciadorTurma {
             }else{
              System.out.println("Alunos matriculados:");
                for (AlunoInfo aluno : alunos){
-                 System.out.println("- " +aluno);
+                  System.out.println("    - " + aluno.getNome() + " (" + aluno.getMatricula() + ")");
+
                 }
             }
         }
