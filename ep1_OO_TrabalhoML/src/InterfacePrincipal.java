@@ -4,9 +4,18 @@ import java.util.Scanner;
 
 public class InterfacePrincipal {
   public static final Scanner scanner = new Scanner(System.in);
-    
+   
     public static void main(String[] args){
        
+      String caminhoAlunos = "alunos.txt";
+      String caminhoDisciplinas = "disciplinas.txt";
+      String caminhoTurmas = "turmas.txt";
+
+     Aluno.carregarAlunosDeArquivo(caminhoAlunos);
+     List<DisciplinaInfo> disciplinas = DisciplinaInfo.carregarDisciplinasDeArquivo(caminhoDisciplinas);
+     Turma.carregarTurmasDeArquivo(caminhoTurmas, disciplinas);
+
+
        int opcao = 0;
         
        while (opcao != 4) {
@@ -49,6 +58,11 @@ public class InterfacePrincipal {
 
 
         }
+
+
+        Aluno.salvarAlunosEmArquivo(caminhoAlunos);
+        DisciplinaInfo.salvarDisciplinasEmArquivo(DisciplinaInfo.getListaDisciplinas(), caminhoDisciplinas);
+        Turma.salvarTurmasEmArquivo(Turma.getlistaTurmas(), caminhoTurmas);
       scanner.close();
 
     }

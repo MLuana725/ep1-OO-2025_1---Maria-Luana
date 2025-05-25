@@ -1,0 +1,2 @@
+NomeTurma|CodigoDisciplina|Professor|Capacidade|Horario|ModoAvaliacao|Presencial
+Turma 1|MAT205|Pedro|100|14|1|true
