@@ -163,6 +163,7 @@ public class InterfacePrincipal {
         System.out.println("4 - Listar Turmas");
         System.out.println("5 - Voltar ao menu principal");
         System.out.print("Escolha uma opção: ");
+        opc = scanner.nextInt();
         scanner.nextLine();
            switch (opc) {
             case 1:
