@@ -63,7 +63,7 @@ public class DisciplinaInfo {
                     String preRequisito = partes[3];
 
                     DisciplinaInfo d = new DisciplinaInfo(nome, codigo, cargaHoraria, preRequisito);
-                    disciplinas.add(d);
+                    listaDisciplinas.add(d);
                 }
             }
         } catch (IOException e) {
@@ -71,6 +71,17 @@ public class DisciplinaInfo {
         }
         return disciplinas;
     }
+
+    private static final List<DisciplinaInfo> listaDisciplinas = new ArrayList<>();
+
+    public static List<DisciplinaInfo> getListaDisciplinas() {
+        return listaDisciplinas;
+    }
+
+    public static void adicionarDisciplina(DisciplinaInfo disciplina) {
+      listaDisciplinas.add(disciplina); 
+    }
+
 
 }
 

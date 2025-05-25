@@ -1,7 +1,10 @@
+
+import java.util.List;
 import java.util.Scanner;
 
 public class InterfacePrincipal {
   public static final Scanner scanner = new Scanner(System.in);
+    
     public static void main(String[] args){
        
        int opcao = 0;
@@ -148,9 +151,71 @@ public class InterfacePrincipal {
     } 
     
     public static void menuModoDisciplina(){
-     System.out.println("==================================================================");
-     System.out.println("                         Modo Disciplina");
-     System.out.println("==================================================================");
+     int opc = 0;
+     while (opc != 5) {
+        System.out.println("==================================================================");
+        System.out.println("                         Modo Disciplina");
+        System.out.println("==================================================================");
+        System.out.println("Escolha o que deseja fazer:");
+        System.out.println("1 - Cadastrar Disciplina");
+        System.out.println("2 - Listar Disciplinas");
+        System.out.println("3 - Cadastrar Turma");
+        System.out.println("4 - Listar Turmas");
+        System.out.println("5 - Voltar ao menu principal");
+        System.out.print("Escolha uma opção: ");
+        scanner.nextLine();
+           switch (opc) {
+            case 1:
+              System.out.print("Nome da Disciplina: ");
+                String nome = scanner.nextLine();
+
+                System.out.print("Código da Disciplina: ");
+                String codigo = scanner.nextLine();
+
+                System.out.print("Carga Horária: ");
+                int cargaHoraria = scanner.nextInt();
+                scanner.nextLine();
+
+                System.out.print("Pré-requisito (digite o código ou 'nenhum'): ");
+                String pre = scanner.nextLine();
+
+                DisciplinaInfo nova = new DisciplinaInfo(nome, codigo, cargaHoraria, pre);
+                DisciplinaInfo.adicionarDisciplina(nova);
+
+                System.out.println("Disciplina cadastrada com sucesso!");
+              break;
+
+            case 2:
+              List<DisciplinaInfo> disciplinas = DisciplinaInfo.getListaDisciplinas();
+                if (disciplinas.isEmpty()) {
+                    System.out.println("Nenhuma disciplina cadastrada.");
+                } else {
+                    System.out.printf("%-20s %-10s %-15s %-15s%n", "Nome", "Código", "Carga Horária", "Pré-requisito");
+                    for (DisciplinaInfo d : disciplinas) {
+                        System.out.printf("%-20s %-10s %-15d %-15s%n", d.getnomeDaDisciplina(), d.getcodigo(), d.getcargaHoraria(), d.getpreRequisito());
+                    }
+                }
+             break;
+
+            case 3:
+              GerenciadorTurma.novaTurma(scanner);
+              break;
+            
+            case 4:
+               GerenciadorTurma.listaDasTurmasEalunos();
+              break;
+             
+            case 5:
+              System.out.println("Retornando ao menu principal...");
+              break;
+
+            default:
+              System.out.println("Opção Inválida");
+              break;
+            }
+
+        }
+
     } 
 
     public static void menuModoAvaliação(){
@@ -161,6 +226,5 @@ public class InterfacePrincipal {
 
 
 
-
+ 
 }
-
