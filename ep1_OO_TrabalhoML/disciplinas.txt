@@ -1,4 +1,4 @@
 Nome|Código|CargaHoraria|PreRequisito
 Cálculo 1|MAT025|90|nenhum
-Engenharia de Ambiente|ECO21|60|nenhum
-IAL|IAL02|60|Cálculo 1
+Engenharia e Ambiente|ECO21|60|nenhum
+Engenharia e Ambiente|EC021|60|nenhum

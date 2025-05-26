@@ -91,6 +91,13 @@ public class Turma{
          writer.write("NomeTurma|CodigoDisciplina|Professor|Capacidade|Horario|ModoAvaliacao|Presencial\n");
           for (Turma t : turmas) {
              writer.write(t.getnomeTurma() + "|" + t.getdisciplina().getcodigo() + "|" + t.getprofessor() + "|" + t.getcapacidade() + "|" + t.gethorarioAula() + "|" + t.getmodoDeAvaliacao() + "|" + t.getpresencial() + "\n");
+               if (!t.getalunosMatriculados().isEmpty()) {
+                writer.write("ALUNOS");
+                for (AlunoInfo aluno : t.getalunosMatriculados()) {
+                    writer.write("|" + aluno.getMatricula());
+                }
+                writer.write("\n");
+            }
             }
           System.out.println("Turmas salvas em: " + caminhoArquivo);
         } catch (IOException e) {
@@ -98,42 +105,45 @@ public class Turma{
     }
   }
 
-    public static List<Turma> carregarTurmasDeArquivo(String caminhoArquivo, List<DisciplinaInfo> disciplinas) {
+   public static List<Turma> carregarTurmasDeArquivo(String caminhoArquivo, List<DisciplinaInfo> disciplinas) {
     listaTurmas.clear();
 
     try (BufferedReader reader = new BufferedReader(
-            new InputStreamReader(new FileInputStream(caminhoArquivo), StandardCharsets.UTF_8))) {
+        new InputStreamReader(new FileInputStream(caminhoArquivo), StandardCharsets.UTF_8))) {
 
-        String linha = reader.readLine(); // cabeçalho
+        String linha = reader.readLine(); // Cabeçalho
+
+        Turma turmaAtual = null;
 
         while ((linha = reader.readLine()) != null) {
-            String[] partes = linha.split("\\|");
-            if (partes.length == 7) {
-                String nomeTurma = partes[0];
-                String codigoDisciplina = partes[1];
-                String professor = partes[2];
-                int capacidade = Integer.parseInt(partes[3]);
-                String horario = partes[4];
-                int modoAvaliacao = Integer.parseInt(partes[5]);
-                boolean presencial = Boolean.parseBoolean(partes[6]);
-
-                // Buscar a disciplina correspondente
-                DisciplinaInfo disciplina = null;
-                for (DisciplinaInfo d : disciplinas) {
-                    if (d.getcodigo().equalsIgnoreCase(codigoDisciplina)) {
-                        disciplina = d;
-                        break;
+            if (linha.startsWith("ALUNOS")) {
+                if (turmaAtual != null) {
+                    String[] partes = linha.split("\\|");
+                    for (int i = 1; i < partes.length; i++) {
+                        AlunoInfo aluno = Aluno.buscarAlunoPorMatricula(partes[i]);
+                        if (aluno != null) {
+                            turmaAtual.getalunosMatriculados().add(aluno);
+                        }
                     }
                 }
-
-                if (disciplina != null) {
-                    Turma turma = new Turma(disciplina, professor, capacidade, horario, modoAvaliacao, presencial, nomeTurma);
-                    listaTurmas.add(turma);
-                } else {
-                    System.out.println("Disciplina não encontrada para o código: " + codigoDisciplina);
-                }
             } else {
-                System.out.println(" Linha inválida (esperado 7 campos): " + linha);
+                String[] partes = linha.split("\\|");
+                if (partes.length == 7) {
+                    String nomeTurma = partes[0];
+                    String codigoDisciplina = partes[1];
+                    String professor = partes[2];
+                    int capacidade = Integer.parseInt(partes[3]);
+                    String horario = partes[4];
+                    int modoAvaliacao = Integer.parseInt(partes[5]);
+                    boolean presencial = Boolean.parseBoolean(partes[6]);
+
+                    DisciplinaInfo disciplina = disciplinas.stream().filter(d -> d.getcodigo().equalsIgnoreCase(codigoDisciplina)).findFirst().orElse(null);
+
+                    if (disciplina != null) {
+                        turmaAtual = new Turma(disciplina, professor, capacidade, horario,modoAvaliacao, presencial, nomeTurma);
+                        listaTurmas.add(turmaAtual);
+                    }
+                }
             }
         }
 
@@ -143,6 +153,7 @@ public class Turma{
 
     return listaTurmas;
 }
+
 
 }
 
