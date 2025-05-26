@@ -1,7 +1,11 @@
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,24 +41,26 @@ public class DisciplinaInfo {
     }
 
     public static void salvarDisciplinasEmArquivo(List<DisciplinaInfo> disciplinas, String caminhoArquivo) {
-        try (FileWriter writer = new FileWriter(caminhoArquivo)) {
-            writer.write("Nome|Código|CargaHoraria|PreRequisito\n"); // cabeçalho
+        try (BufferedWriter writer = new BufferedWriter(
+             new OutputStreamWriter(new FileOutputStream(caminhoArquivo), StandardCharsets.UTF_8))) {
+             writer.write("Nome|Código|CargaHoraria|PreRequisito\n"); // cabeçalho
 
-            for (DisciplinaInfo d : disciplinas) {
-                writer.write(d.getnomeDaDisciplina() + "|" + d.getcodigo() + "|" + d.getcargaHoraria() + "|" + d.getpreRequisito() + "\n");
-            }
-            System.out.println("Arquivo de disciplinas salvo em: " + caminhoArquivo);
-        } catch (IOException e) {
-            System.err.println("Erro ao salvar disciplinas: " + e.getMessage());
+               for (DisciplinaInfo d : disciplinas) {
+                 writer.write(d.getnomeDaDisciplina() + "|" + d.getcodigo() + "|" + d.getcargaHoraria() + "|" + d.getpreRequisito() + "\n");
+                }
+             System.out.println("Arquivo de disciplinas salvo em: " + caminhoArquivo);
+            } catch (IOException e) {
+             System.err.println("Erro ao salvar disciplinas: " + e.getMessage());
         }
     }
 
     public static List<DisciplinaInfo> carregarDisciplinasDeArquivo(String caminhoArquivo) {
         List<DisciplinaInfo> disciplinas = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(caminhoArquivo))) {
-            String linha = reader.readLine(); // ler cabeçalho
+         try (BufferedReader reader = new BufferedReader(
+             new InputStreamReader(new FileInputStream(caminhoArquivo), StandardCharsets.UTF_8))) {
+             String linha = reader.readLine(); // ler cabeçalho
 
-            while ((linha = reader.readLine()) != null) {
+             while ((linha = reader.readLine()) != null) {
                 String[] partes = linha.split("\\|");
                 if (partes.length == 4) {
                     String nome = partes[0];

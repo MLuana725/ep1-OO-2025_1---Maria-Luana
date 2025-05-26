@@ -1,7 +1,11 @@
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,13 +85,15 @@ public class Turma{
    }
    
   public static void salvarTurmasEmArquivo(List<Turma> turmas, String caminhoArquivo) {
-   try (FileWriter writer = new FileWriter(caminhoArquivo)) {
-        writer.write("NomeTurma|CodigoDisciplina|Professor|Capacidade|Horario|ModoAvaliacao|Presencial\n");
-        for (Turma t : turmas) {
-         writer.write(t.getnomeTurma() + "|" + t.getdisciplina().getcodigo() + "|" + t.getprofessor() + "|" + t.getcapacidade() + "|" + t.gethorarioAula() + "|" + t.getmodoDeAvaliacao() + "|" + t.getpresencial() + "\n");
-        }
-        System.out.println("Turmas salvas em: " + caminhoArquivo);
-    } catch (IOException e) {
+   try (BufferedWriter writer = new BufferedWriter(
+        new OutputStreamWriter(new FileOutputStream(caminhoArquivo), StandardCharsets.UTF_8))) {
+
+         writer.write("NomeTurma|CodigoDisciplina|Professor|Capacidade|Horario|ModoAvaliacao|Presencial\n");
+          for (Turma t : turmas) {
+             writer.write(t.getnomeTurma() + "|" + t.getdisciplina().getcodigo() + "|" + t.getprofessor() + "|" + t.getcapacidade() + "|" + t.gethorarioAula() + "|" + t.getmodoDeAvaliacao() + "|" + t.getpresencial() + "\n");
+            }
+          System.out.println("Turmas salvas em: " + caminhoArquivo);
+        } catch (IOException e) {
         System.err.println("Erro ao salvar turmas: " + e.getMessage());
     }
   }
@@ -95,7 +101,8 @@ public class Turma{
 
     public static List<Turma> carregarTurmasDeArquivo(String caminhoArquivo, List<DisciplinaInfo> disciplinas) {
      List<Turma> turmas = new ArrayList<>();
-       try (BufferedReader reader = new BufferedReader(new FileReader(caminhoArquivo))) {
+        try (BufferedReader reader = new BufferedReader(
+            new InputStreamReader(new FileInputStream(caminhoArquivo), StandardCharsets.UTF_8))) {
           String linha = reader.readLine(); // cabeçalho
 
            while ((linha = reader.readLine()) != null) {
