@@ -56,7 +56,7 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Principais Funcionalidades Implementadas
 
-- [ ] Cadastro, listagem, matrícula e trancamento de alunos (Normais e Especiais)
+- [ X] Cadastro, listagem, matrícula e trancamento de alunos (Normais e Especiais)
 - [ ] Cadastro de disciplinas e criação de turmas (presenciais e remotas)
 - [ ] Matrícula de alunos em turmas, respeitando vagas e pré-requisitos
 - [ ] Lançamento de notas e controle de presença
