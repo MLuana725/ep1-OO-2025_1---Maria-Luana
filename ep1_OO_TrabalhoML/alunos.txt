@@ -1,4 +1,4 @@
 Nome|Matricula|Curso
 Fernando|111|Engenharia|true
-Maria|222|Espanhol|false
-Fulana|333|Pesca|false
+Maria |222|Espanhol|false
+Ciclana|333|Geografia|false
