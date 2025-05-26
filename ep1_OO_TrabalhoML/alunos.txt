@@ -1,2 +1,4 @@
 Nome|Matricula|Curso
-Lucas da Silva|12345678|Engenharia
+Fernando de Souza|1111111|Engenharia
+Pedro da Silva|2222222|Geografia
+Luana de Castro|3333333|Espanhol

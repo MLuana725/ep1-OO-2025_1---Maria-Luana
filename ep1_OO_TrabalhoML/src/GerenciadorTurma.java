@@ -53,15 +53,22 @@ public class GerenciadorTurma {
          scanner.nextLine();
 
          System.out.print("Sua turma será presencial? Digite 'true' para sim e 'false' para não :");
-         boolean presencial = scanner.nextBoolean();
+         String presencaInput = scanner.nextLine();
+         boolean presencial = Boolean.parseBoolean(presencaInput);
 
          Turma novaTurma = new Turma(disciplina, professor, capacidade, horarioAula, modoDeAvaliacao, presencial, nomeTurma);
-        
+         Turma.getlistaTurmas().add(novaTurma);
+
+
          System.out.println("Turma criada com sucesso!");
          System.out.println("Disciplina: " + novaTurma.getdisciplina().getnomeDaDisciplina());
          System.out.println("Professor: " + novaTurma.getprofessor());
+         System.out.print("Deseja cadastrar outra turma? (sim/não): ");
+         resposta = scanner.nextLine();
+
          
         }
+        Turma.salvarTurmasEmArquivo(Turma.getlistaTurmas(), "turmas.txt");
         System.out.println("Encerrando o cadastro de turmas.");
         
 
@@ -81,7 +88,7 @@ public class GerenciadorTurma {
         System.out.printf("%-15s %-10s %-15s %-12s %-10s %-15s %-10s%n","Turma", "Código", "Professor", "Capacidade", "Alunos", "Horário", "Presencial");
 
         for (Turma turma : turmas){
-          System.out.printf("%-15s %-10s %-15s %-12d %-10d %-15d %-10s%n",
+          System.out.printf("%-15s %-10s %-15s %-12d %-10d %-15s %-10s%n",
             turma.getnomeTurma(),
             turma.getdisciplina().getcodigo(),
             turma.getprofessor(),

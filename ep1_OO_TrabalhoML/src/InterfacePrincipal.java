@@ -110,6 +110,7 @@ public class InterfacePrincipal {
 
                 if (Aluno.adicionarAluno(novoAluno)) {
                   System.out.println("Aluno cadastrado com sucesso!");
+                  Aluno.salvarAlunosEmArquivo("alunos.txt");
                 }
                break;
 
@@ -150,6 +151,7 @@ public class InterfacePrincipal {
               }
 
               System.out.println("Dados atualizados com sucesso!");
+              Aluno.salvarAlunosEmArquivo("alunos.txt");
               break;
              
             case 5:
@@ -197,7 +199,7 @@ public class InterfacePrincipal {
 
                 DisciplinaInfo nova = new DisciplinaInfo(nome, codigo, cargaHoraria, pre);
                 DisciplinaInfo.adicionarDisciplina(nova);
-
+                DisciplinaInfo.salvarDisciplinasEmArquivo(DisciplinaInfo.getListaDisciplinas(), "disciplinas.txt");
                 System.out.println("Disciplina cadastrada com sucesso!");
               break;
 

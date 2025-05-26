@@ -1,1 +1,4 @@
 Nome|Código|CargaHoraria|PreRequisito
+C�lculo 1|MAT025|90|nenhum
+Engenharia de Ambiente|ECO21|90|nenhum
+IAL|IAL01|45|C�lculo 1

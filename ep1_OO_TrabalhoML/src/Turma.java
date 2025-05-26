@@ -27,7 +27,7 @@ public class Turma{
         this.modoDeAvaliacao = modoDeAvaliacao;
         this.presencial = presencial;
         this.nomeTurma = nomeTurma;
-        listaTurmas.add(this);
+        
     }
 
     public String getprofessor(){
