@@ -55,28 +55,33 @@ public class DisciplinaInfo {
     }
 
     public static List<DisciplinaInfo> carregarDisciplinasDeArquivo(String caminhoArquivo) {
-        List<DisciplinaInfo> disciplinas = new ArrayList<>();
-         try (BufferedReader reader = new BufferedReader(
-             new InputStreamReader(new FileInputStream(caminhoArquivo), StandardCharsets.UTF_8))) {
-             String linha = reader.readLine(); // ler cabeçalho
+    listaDisciplinas.clear(); // Limpa a lista antes de carregar
+    try (BufferedReader reader = new BufferedReader(
+            new InputStreamReader(new FileInputStream(caminhoArquivo), StandardCharsets.UTF_8))) {
 
-             while ((linha = reader.readLine()) != null) {
-                String[] partes = linha.split("\\|");
-                if (partes.length == 4) {
-                    String nome = partes[0];
-                    String codigo = partes[1];
-                    int cargaHoraria = Integer.parseInt(partes[2]);
-                    String preRequisito = partes[3];
+        String linha = reader.readLine(); 
 
-                    DisciplinaInfo d = new DisciplinaInfo(nome, codigo, cargaHoraria, preRequisito);
-                    listaDisciplinas.add(d);
-                }
+        while ((linha = reader.readLine()) != null) {
+            String[] partes = linha.split("\\|");
+            if (partes.length == 4) {
+                String nome = partes[0];
+                String codigo = partes[1];
+                int cargaHoraria = Integer.parseInt(partes[2]);
+                String preRequisito = partes[3];
+
+                DisciplinaInfo d = new DisciplinaInfo(nome, codigo, cargaHoraria, preRequisito);
+                listaDisciplinas.add(d);
+            } else {
+                System.out.println("Linha inválida (esperado 4 campos): " + linha);
             }
-        } catch (IOException e) {
-            System.err.println("Erro ao carregar disciplinas: " + e.getMessage());
         }
-        return disciplinas;
+    } catch (IOException e) {
+        System.err.println("Erro ao carregar disciplinas: " + e.getMessage());
     }
+
+    return listaDisciplinas;
+}
+
 
     private static final List<DisciplinaInfo> listaDisciplinas = new ArrayList<>();
 

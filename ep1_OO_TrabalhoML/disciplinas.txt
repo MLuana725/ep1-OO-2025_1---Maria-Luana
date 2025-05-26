@@ -1,2 +1,0 @@
-Nome|Código|CargaHoraria|PreRequisito
-Cálculo 1|MAT205|90|nenhum

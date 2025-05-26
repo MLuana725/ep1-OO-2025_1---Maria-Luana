@@ -98,45 +98,51 @@ public class Turma{
     }
   }
 
-
     public static List<Turma> carregarTurmasDeArquivo(String caminhoArquivo, List<DisciplinaInfo> disciplinas) {
-     List<Turma> turmas = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(
+    listaTurmas.clear();
+
+    try (BufferedReader reader = new BufferedReader(
             new InputStreamReader(new FileInputStream(caminhoArquivo), StandardCharsets.UTF_8))) {
-          String linha = reader.readLine(); // cabeçalho
 
-           while ((linha = reader.readLine()) != null) {
-             String[] partes = linha.split("\\|");
-               if (partes.length == 7) {
-                  String nomeTurma = partes[0];
-                  String codigoDisciplina = partes[1];
-                  String professor = partes[2];
-                  int capacidade = Integer.parseInt(partes[3]);
-                  int horario = Integer.parseInt(partes[4]);
-                  int modoAvaliacao = Integer.parseInt(partes[5]);
-                  boolean presencial = Boolean.parseBoolean(partes[6]);
+        String linha = reader.readLine(); // cabeçalho
 
-                 // Busca disciplina pelo código
-                 DisciplinaInfo disciplina = null;
-                   for (DisciplinaInfo d : disciplinas) {
-                       if (d.getcodigo().equalsIgnoreCase(codigoDisciplina)) {
-                          disciplina = d;
-                          break;
-                        }
-                    }
+        while ((linha = reader.readLine()) != null) {
+            String[] partes = linha.split("\\|");
+            if (partes.length == 7) {
+                String nomeTurma = partes[0];
+                String codigoDisciplina = partes[1];
+                String professor = partes[2];
+                int capacidade = Integer.parseInt(partes[3]);
+                int horario = Integer.parseInt(partes[4]);
+                int modoAvaliacao = Integer.parseInt(partes[5]);
+                boolean presencial = Boolean.parseBoolean(partes[6]);
 
-                    if (disciplina != null) {
-                       Turma turma = new Turma(disciplina, professor, capacidade, horario, modoAvaliacao, presencial, nomeTurma);
-                       turmas.add(turma);
-                    } else {
-                       System.out.println("Disciplina não encontrada para código: " + codigoDisciplina);
+                // Buscar a disciplina correspondente
+                DisciplinaInfo disciplina = null;
+                for (DisciplinaInfo d : disciplinas) {
+                    if (d.getcodigo().equalsIgnoreCase(codigoDisciplina)) {
+                        disciplina = d;
+                        break;
                     }
                 }
+
+                if (disciplina != null) {
+                    Turma turma = new Turma(disciplina, professor, capacidade, horario, modoAvaliacao, presencial, nomeTurma);
+                    listaTurmas.add(turma);
+                } else {
+                    System.out.println("⚠ Disciplina não encontrada para o código: " + codigoDisciplina);
+                }
+            } else {
+                System.out.println("⚠ Linha inválida (esperado 7 campos): " + linha);
             }
-        } catch (IOException e) {
-            System.err.println("Erro ao carregar turmas: " + e.getMessage());
         }
-        return turmas;
+
+    } catch (IOException e) {
+        System.err.println("Erro ao carregar turmas: " + e.getMessage());
     }
+
+    return listaTurmas;
+}
+
 }
 

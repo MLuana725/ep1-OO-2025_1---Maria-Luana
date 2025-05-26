@@ -1,2 +1,0 @@
-NomeTurma|CodigoDisciplina|Professor|Capacidade|Horario|ModoAvaliacao|Presencial
-Turma 1|MAT205|Jo�o Paulo|120|14|1|true
