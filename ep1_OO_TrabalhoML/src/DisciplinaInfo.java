@@ -59,7 +59,7 @@ public class DisciplinaInfo {
     try (BufferedReader reader = new BufferedReader(
             new InputStreamReader(new FileInputStream(caminhoArquivo), StandardCharsets.UTF_8))) {
 
-        String linha = reader.readLine(); 
+         String linha = reader.readLine(); 
 
         while ((linha = reader.readLine()) != null) {
             String[] partes = linha.split("\\|");

@@ -1,0 +1,3 @@
+Nome|Código|CargaHoraria|PreRequisito
+Cálculo 1|MAT025|90|nenhum
+Engenharia de Ambiente|ECO21|60|nenhum
