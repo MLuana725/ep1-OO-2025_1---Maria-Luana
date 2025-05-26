@@ -41,13 +41,16 @@ O enunciado do trabalho pode ser encontrado aqui:
 ## Prints da Execução
 
 1. Menu Principal:  
-   ![Inserir Print 1](caminho/do/print1.png)
+   ![Menu principal](https://github.com/user-attachments/assets/57bda57f-93b2-48f7-bc68-a792c212c789)
 
-2. Cadastro de Aluno:  
-   ![Inserir Print 2](caminho/do/print2.png)
 
-3. Relatório de Frequência/Notas:  
-   ![Inserir Print 3](caminho/do/print3.png)
+2. Método de Criação de turmas:  
+   ![Método para criar nova turma](https://github.com/user-attachments/assets/aec8a238-6018-40e6-99e8-b23a886c5255)
+
+
+3. Métodos de salvamento em arquivo dos dados das turmas:  
+  ![Métodos de Salvamento de arquivos txt](https://github.com/user-attachments/assets/cfba3d0e-699d-48cf-b0f3-de9a414e3765)
+
 
 ---
 
