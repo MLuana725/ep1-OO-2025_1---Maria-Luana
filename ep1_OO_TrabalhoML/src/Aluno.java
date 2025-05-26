@@ -35,7 +35,8 @@ public class Aluno {
         try (FileWriter writer = new FileWriter(caminhoArquivo)) {
             writer.write("Nome|Matricula|Curso\n"); // cabeçalho correto
             for (AlunoInfo aluno : listaDeAlunos) {
-                writer.write(aluno.getNome() + "|" + aluno.getMatricula() + "|" + aluno.getCurso() + "\n");
+               writer.write(aluno.getNome() + "|" + aluno.getMatricula() + "|" + aluno.getCurso() + "|" + aluno.isAlunoEspecial() + "\n");
+
             }
             System.out.println("Arquivo salvo com sucesso: " + caminhoArquivo);
         } catch (IOException e) {
@@ -51,14 +52,22 @@ public class Aluno {
 
             while ((linha = reader.readLine()) != null) {
                 String[] partes = linha.split("\\|");
-                if (partes.length == 3) {
-                    String nome = partes[0];
-                    String matricula = partes[1];
-                    String curso = partes[2];
+                if (partes.length >= 4) {
+                  String nome = partes[0];
+                  String matricula = partes[1];
+                  String curso = partes[2];
+                  boolean especial = Boolean.parseBoolean(partes[3]);
 
-                    AlunoInfo aluno = new AlunoInfo(nome, matricula, curso);
-                    listaDeAlunos.add(aluno);
+                  AlunoInfo aluno;
+                  if (especial) {
+                      aluno = new AlunoEspecial(nome, matricula, curso);
+                    } else {
+                      aluno = new AlunoInfo(nome, matricula, curso);
+                    }
+
+                  listaDeAlunos.add(aluno);
                 }
+
             }
             System.out.println("Alunos carregados com sucesso de: " + caminhoArquivo);
         } catch (IOException e) {
