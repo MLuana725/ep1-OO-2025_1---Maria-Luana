@@ -57,20 +57,20 @@ O enunciado do trabalho pode ser encontrado aqui:
 ## Principais Funcionalidades Implementadas
 
 - [ X] Cadastro, listagem, matrícula e trancamento de alunos (Normais e Especiais)
-- [ ] Cadastro de disciplinas e criação de turmas (presenciais e remotas)
-- [ ] Matrícula de alunos em turmas, respeitando vagas e pré-requisitos
+- [ X] Cadastro de disciplinas e criação de turmas (presenciais e remotas)
+- [ X] Matrícula de alunos em turmas, respeitando vagas e pré-requisitos
 - [ ] Lançamento de notas e controle de presença
 - [ ] Cálculo de média final e verificação de aprovação/reprovação
 - [ ] Relatórios de desempenho acadêmico por aluno, turma e disciplina
-- [ ] Persistência de dados em arquivos (.txt ou .csv)
-- [ ] Tratamento de duplicidade de matrículas
-- [ ] Uso de herança, polimorfismo e encapsulamento
+- [X ] Persistência de dados em arquivos (.txt ou .csv)
+- [ X] Tratamento de duplicidade de matrículas
+- [ X] Uso de herança, polimorfismo e encapsulamento
 
 ---
 
 ## Observações (Extras ou Dificuldades)
 
-- Em questão de dificuldades, uma delas foi manter a organização das classes, que, com a necessidade de criação de novos métodos conforme o progresso do código, fazia com que multiplas vezes eu cogitasse criar uma nova classe ou repensar a função de outra. Além disso, lembrar e aplicar corretamente as relações de metodos de classes diferentes também foi um desafio, pois acabava confundido que informação era enviada para qual método ou simplesmente trocava a que classe pertencia certo método, o que as vezes fazia os dados serem perdidos ou não utilizados no progama. Tive que aprender como salvar em arquivo .txt e com isso, fui capaz de entender como o salvamento de dados funciona nos códigos, algo que até então não compreendia completamente. Aprender a formatar o modo que os dados são escritos nos arquivos foi um conhecimento a mais que achei interessante.
+- Em questão de dificuldades, uma delas foi manter a organização das classes, que, com a necessidade de criação de novos métodos conforme o progresso do código, fazia com que multiplas vezes eu cogitasse criar uma nova classe ou repensar a função de outra. Além disso, lembrar e aplicar corretamente as relações de metodos de classes diferentes também foi um desafio, pois acabava confundido que informação era enviada para qual método ou simplesmente trocava a que classe pertencia certo método, o que as vezes fazia os dados serem perdidos ou não utilizados no progama. Tive que aprender como salvar em arquivo .txt e com isso, fui capaz de entender como o salvamento de dados funciona nos códigos, algo que até então não compreendia completamente. Aprender a formatar o modo que os dados são escritos nos arquivos foi um conhecimento a mais que achei interessante. 
 
 ---
 
