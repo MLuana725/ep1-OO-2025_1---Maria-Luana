@@ -89,8 +89,9 @@ public class InterfacePrincipal {
              System.out.println("Matricula do Aluno:");
              String matricula = scanner.nextLine();
 
-             if (Aluno.checarMatricula(matricula)) {
+             if (!Aluno.checarMatricula(matricula)) {
                 System.out.println("Aluno já cadastrado.");
+                break;
              }
 
              System.out.println("Curso:");

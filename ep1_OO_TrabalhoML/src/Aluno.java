@@ -80,16 +80,17 @@ public class Aluno {
     public static boolean checarMatricula(String novaMatricula){
         for (AlunoInfo alunoInfo : listaDeAlunos){
             if(alunoInfo.getMatricula().equalsIgnoreCase(novaMatricula)){
-                return true;
+                System.out.println("Matrícula já cadastrada.");
+                return false;
             }
         }
-        System.out.println("Matrícula já cadastrada.");
-        return false;
+        
+        return true;
 
     }
 
     public static boolean adicionarAluno(AlunoInfo aluno) {
-        if (checarMatricula(aluno.getMatricula())) {
+        if (!checarMatricula(aluno.getMatricula())) {
             System.out.println("Matrícula já cadastrada.");
             return false;
         }
