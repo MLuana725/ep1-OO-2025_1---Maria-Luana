@@ -19,7 +19,7 @@ public class GerenciadorTurma {
          int cargaHoraria = scanner.nextInt();
          scanner.nextLine();
 
-         System.out.print("Digite os pré-requisitos necessários para o aluno poder realizar a disciplina (digite o código):");
+         System.out.print("Digite os pré-requisitos necessários para o aluno poder realizar a disciplina (digite o código), se não, digite 'nenhum':");
          String preRequisito = scanner.nextLine();
 
          DisciplinaInfo disciplina = new DisciplinaInfo(nomeDisciplina, codigo, cargaHoraria, preRequisito);
@@ -42,7 +42,7 @@ public class GerenciadorTurma {
 
          System.out.print("Escolha (digitando 1 ou 2) o modo de avaliação da turma:\n");
          System.out.print("1-Media Final = (P1 + P2 + P3 + L + S) / 5\n");
-         System.out.print("Media Final = (P1 + P2 * 2 + P3 * 3 + L + S) / 8");
+         System.out.println("2-Media Final = (P1 + P2 * 2 + P3 * 3 + L + S) / 8");
          int modoDeAvaliacao = scanner.nextInt();
          scanner.nextLine();
 

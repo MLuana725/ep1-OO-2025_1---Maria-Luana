@@ -234,9 +234,15 @@ public class InterfacePrincipal {
     } 
 
     public static void menuModoAvaliação(){
-     System.out.println("==================================================================");
-     System.out.println("                         Modo Avaliação");
-     System.out.println("==================================================================");
+     int opc = 0;
+     while (opc != 5) {
+       System.out.println("==================================================================");
+       System.out.println("                         Modo Avaliação");
+       System.out.println("==================================================================");
+       System.out.println("Modo ainda em construção, volte para o menu principal digitando 5");
+       opc = scanner.nextInt();
+       scanner.nextLine();
+      }
     } 
 
 
