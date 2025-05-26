@@ -15,14 +15,20 @@ public class GerenciadorTurma {
          System.out.print("Digite o código da disciplina:");
          String codigo = scanner.nextLine();
 
-         System.out.print("Digite a carga horária total:");
+         System.out.print("Digite a carga horária total (em horas):");
          int cargaHoraria = scanner.nextInt();
          scanner.nextLine();
 
          System.out.print("Digite os pré-requisitos necessários para o aluno poder realizar a disciplina (digite o código), se não, digite 'nenhum':");
          String preRequisito = scanner.nextLine();
 
-         DisciplinaInfo disciplina = new DisciplinaInfo(nomeDisciplina, codigo, cargaHoraria, preRequisito);
+         DisciplinaInfo disciplina = DisciplinaInfo.getListaDisciplinas().stream().filter(d -> d.getcodigo().equalsIgnoreCase(codigo)).findFirst().orElse(null);
+
+         if (disciplina == null) {
+             disciplina = new DisciplinaInfo(nomeDisciplina, codigo, cargaHoraria, preRequisito);
+             DisciplinaInfo.adicionarDisciplina(disciplina);
+            }
+
 
          System.out.println("Informações da Turma");
 
@@ -33,8 +39,8 @@ public class GerenciadorTurma {
          String professor = scanner.nextLine();
 
          System.out.print("Digite o horário da aula:");
-         int horarioAula = scanner.nextInt();
-         scanner.nextLine();
+         String horarioAula = scanner.nextLine();
+         
 
          System.out.print("Digite a quantidade máxima de alunos que cabem na turma :");
          int capacidade = scanner.nextInt();
@@ -54,8 +60,7 @@ public class GerenciadorTurma {
          System.out.println("Turma criada com sucesso!");
          System.out.println("Disciplina: " + novaTurma.getdisciplina().getnomeDaDisciplina());
          System.out.println("Professor: " + novaTurma.getprofessor());
-         System.out.println("Deseja cadastrar outra turma?");
-         resposta = scanner.nextLine();
+         
         }
         System.out.println("Encerrando o cadastro de turmas.");
         

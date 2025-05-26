@@ -67,8 +67,12 @@ public class Aluno {
     }
     
     public static void impressãoListaAlunos(){
-      for (AlunoInfo aluno : listaDeAlunos){
-            System.out.println(aluno);
+       if (listaDeAlunos.isEmpty()) {
+          System.out.println("Não há alunos cadastrados.");
+        } else {
+           for (AlunoInfo aluno : listaDeAlunos) {
+              System.out.println(aluno);
+            }
         }
     }
     
@@ -79,6 +83,7 @@ public class Aluno {
                 return true;
             }
         }
+        System.out.println("Matrícula já cadastrada.");
         return false;
 
     }

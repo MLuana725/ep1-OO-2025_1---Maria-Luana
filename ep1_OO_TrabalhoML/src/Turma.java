@@ -13,13 +13,13 @@ public class Turma{
     private DisciplinaInfo disciplina;
     private String professor;
     private int capacidade;
-    private int horarioAula;
+    private String horarioAula;
     private int modoDeAvaliacao;
     private boolean presencial;
     private String nomeTurma;
 
     //construtores das variávies
-    public Turma(DisciplinaInfo disciplina, String professor, int capacidade, int horarioAula, int modoDeAvaliacao, boolean presencial, String nomeTurma){
+    public Turma(DisciplinaInfo disciplina, String professor, int capacidade, String horarioAula, int modoDeAvaliacao, boolean presencial, String nomeTurma){
         this.disciplina = disciplina;
         this.professor = professor;
         this.capacidade = capacidade;
@@ -38,7 +38,7 @@ public class Turma{
         return capacidade;
     }
 
-    public int gethorarioAula(){
+    public String gethorarioAula(){
         return horarioAula;
     }
 
@@ -113,7 +113,7 @@ public class Turma{
                 String codigoDisciplina = partes[1];
                 String professor = partes[2];
                 int capacidade = Integer.parseInt(partes[3]);
-                int horario = Integer.parseInt(partes[4]);
+                String horario = partes[4];
                 int modoAvaliacao = Integer.parseInt(partes[5]);
                 boolean presencial = Boolean.parseBoolean(partes[6]);
 
@@ -130,10 +130,10 @@ public class Turma{
                     Turma turma = new Turma(disciplina, professor, capacidade, horario, modoAvaliacao, presencial, nomeTurma);
                     listaTurmas.add(turma);
                 } else {
-                    System.out.println("⚠ Disciplina não encontrada para o código: " + codigoDisciplina);
+                    System.out.println("Disciplina não encontrada para o código: " + codigoDisciplina);
                 }
             } else {
-                System.out.println("⚠ Linha inválida (esperado 7 campos): " + linha);
+                System.out.println(" Linha inválida (esperado 7 campos): " + linha);
             }
         }
 

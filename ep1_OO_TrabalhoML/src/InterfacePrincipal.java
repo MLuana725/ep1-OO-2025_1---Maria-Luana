@@ -187,7 +187,7 @@ public class InterfacePrincipal {
                 System.out.print("Código da Disciplina: ");
                 String codigo = scanner.nextLine();
 
-                System.out.print("Carga Horária: ");
+                System.out.print("Carga Horária (em horas): ");
                 int cargaHoraria = scanner.nextInt();
                 scanner.nextLine();
 
