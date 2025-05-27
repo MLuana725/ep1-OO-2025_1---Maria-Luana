@@ -1,4 +1,4 @@
 NomeTurma|CodigoDisciplina|Professor|Capacidade|Horario|ModoAvaliacao|Presencial
 Turma 1|MAT025|Fragelli|2|10h-12h|1|true
-ALUNOS|222
-Turma 1|EC021|Josiane|1|14h-16h|1|true
+ALUNOS|222|333
+Turma 1|IAL02|Bruno|1|13h-15h|1|true
