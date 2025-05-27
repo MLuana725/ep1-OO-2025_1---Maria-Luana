@@ -105,7 +105,8 @@ ep1_OO_TrabalhoML/
 
 ## Observações (Extras ou Dificuldades)
 
-- Em questão de dificuldades, uma delas foi manter a organização das classes, que, com a necessidade de criação de novos métodos conforme o progresso do código, fazia com que multiplas vezes eu cogitasse criar uma nova classe ou repensar a função de outra. Além disso, lembrar e aplicar corretamente as relações de metodos de classes diferentes também foi um desafio, pois acabava confundido que informação era enviada para qual método ou simplesmente trocava a que classe pertencia certo método, o que as vezes fazia os dados serem perdidos ou não utilizados no progama. Tive que aprender como salvar em arquivo .txt e com isso, fui capaz de entender como o salvamento de dados funciona nos códigos, algo que até então não compreendia completamente. Aprender a formatar o modo que os dados são escritos nos arquivos foi um conhecimento a mais que achei interessante. 
+- Em questão de dificuldades, uma delas foi manter a organização das classes, que, com a necessidade de criação de novos métodos conforme o progresso do código, fazia com que multiplas vezes eu cogitasse criar uma nova classe ou repensar a função de outra. Além disso, lembrar e aplicar corretamente as relações de metodos de classes diferentes também foi um desafio, pois acabava confundido que informação era enviada para qual método ou simplesmente trocava a que classe pertencia certo método, o que as vezes fazia os dados serem perdidos ou não utilizados no progama. Tive que aprender como salvar em arquivo .txt e com isso, fui capaz de entender como o salvamento de dados funciona nos códigos, algo que até então não compreendia completamente. Aprender a formatar o modo que os dados são escritos nos arquivos foi um conhecimento a mais que achei interessante.
+- As turmas e alunos do mostrados nos vídeos não serão os mesmos dos arquivos, pois era só uma demonstração, mas o funcionamento é o mesmo
 
 ---
 
