@@ -19,41 +19,46 @@ O enunciado do trabalho pode ser encontrado aqui:
 ## Instruções para Compilação e Execução
 
 1. **Compilação:**
-   É necessário utilizar o vscode. Baixe todo o arquivo do projeto. No VsCode, se ainda não tiver, baixe toda a extensão do pacote Java (que também pode ser encontrada no site ode-visualstudio-com.translate.goog/docs/java/extensions?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc). Em seguida, abra o projeto no VsCode e o execute
-   e automaticamente o VsCode irá o compilar. Caso não funcione, siga os passos:
-   Abra o terminal no VS Code, navegue até a raiz do projeto, se necessário e execute o seguinte comando:
+   É necessário utilizar o vscode. Baixe todo o arquivo do projeto. No VsCode, se ainda não tiver, baixe toda a extensão do pacote Java
+   - (que também pode ser encontrada no site ode-visualstudio-com.translate.goog/docs/java/extensions?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc).
+
+    Em seguida, abra o projeto no VsCode e o execute
+   e automaticamente o VsCode irá o compilar.
+   
+   Caso não funcione, siga os passos:
+   
+   Abra o terminal no VS Code, navegue até a raiz do projeto, se necessário, e execute o seguinte comando:
    javac -d bin src/*.java
 
 3. **Execução:**  
    Vá para a classe InterfacePrincipal e execute o main, apertando (no VsCode) o botão "Run Java", que está no canto direito da tela. Caso não funcione, execute os passos:
+   
    Após a compilação, para executar o programa principal, utilize:
    java -cp bin InterfacePrincipal no terminal
 
 5. **Estrutura de Pastas:**  
-   As pastas, no vscode, devem ficar desse modo: 
+   As pastas, no vscode, devem ficar desse modo:
+   
 ep1_OO_TrabalhoML/
-├── src/                    # Código-fonte (.java)
-│   ├── InterfacePrincipal.java
-│   ├── Aluno.java
-│   ├── AlunoInfo.java
-│   ├── AlunoEspecial.java
-│   ├── DisciplinaInfo.java
-│   ├── Turma.java
-│   └── GerenciadorTurma.java
-│
-├── bin/                    # Arquivos compilados (.class)
-│
-├── lib/                    # Bibliotecas externas 
-│   
-│
-├── .vscode/                # Configurações do VS Code
-│   └── settings.json       # Caminho do JDK, configurações de build, etc.
-│
-├── alunos.txt              # Dados dos alunos
-├── turmas.txt              # Dados das turmas
-├── disciplinas.txt         # Dados das disciplinas
-│
-└── README.md              
+- src/                    
+    - InterfacePrincipal.java
+    - Aluno.java
+    - AlunoInfo.java
+    - AlunoEspecial.java
+    - DisciplinaInfo.java
+    - Turma.java
+    - GerenciadorTurma.java
+
+- bin/                    
+- lib/                    
+- .vscode/                
+    - settings.json       
+
+- alunos.txt             
+- turmas.txt              
+- disciplinas.txt         
+
+- README.md              
 
 
 
